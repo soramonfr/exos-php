@@ -26,11 +26,11 @@
     <?php
     function exo7($age, $gender)
     {
-        if ($age > 18 && $gender === "Homme") {
+        if ($age >= 18 && $gender === "Homme") {
          return "Vous êtes un homme et vous êtes majeur 🧟‍♂️";
         } elseif ($age < 18 && $gender === "Homme") {
             return "Vous êtes un homme et vous êtes mineur 👶";
-        } elseif ($age > 18 && $gender === "Femme") {
+        } elseif ($age >= 18 && $gender === "Femme") {
             return "Vous êtes une femme et vous êtes majeure 👸";
         } elseif ($age < 18 && $gender === "Femme") {
             return "Vous êtes une femme et vous êtes mineure 👋";
