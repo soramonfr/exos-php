@@ -15,7 +15,8 @@
     </p>
 
     <?php
-
+    $months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    var_dump($months[2]);
     ?>
 
 </body>
