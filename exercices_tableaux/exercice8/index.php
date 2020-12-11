@@ -15,7 +15,11 @@
     </p>
 
     <?php
-
+    $months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    
+    foreach ($months as $monthNames) {
+        echo $monthNames . "<br>";
+    }
     ?>
 
 </body>
