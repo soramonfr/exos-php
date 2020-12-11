@@ -25,7 +25,7 @@
 
     foreach($hautsDeFrance as $departmentName)
     {
-        echo $departmentName . '<br />'; 
+        echo $departmentName . "<br>"; 
     }
     ?>
 
