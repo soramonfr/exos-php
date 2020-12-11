@@ -11,11 +11,12 @@
     <h1># PHP - Les tableaux</h1>
 
     <p>## Exercice 3 <br>
-        Avec le tableau de l'exercice , afficher la valeur de l'index 5.
+        Avec le tableau de l'exercice 1, afficher la valeur de l'index 5.
     </p>
 
     <?php
-
+    $months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    var_dump($months[5]);
     ?>
 
 </body>
