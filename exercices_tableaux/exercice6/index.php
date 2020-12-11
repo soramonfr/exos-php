@@ -22,7 +22,7 @@
         '62' => 'Pas-de-Calais',
         '80' => 'Somme',
     ];
-    var_dump($hautsDeFrance[59]);
+    var_dump($hautsDeFrance['59']);
     ?>
 
 </body>

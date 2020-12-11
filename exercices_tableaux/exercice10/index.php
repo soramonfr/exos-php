@@ -16,7 +16,17 @@
     </p>
 
     <?php
+    $hautsDeFrance = [
+        '02' => 'Aisne',
+        '59' => 'Nord',
+        '60' => 'Oise',
+        '62' => 'Pas-de-Calais',
+        '80' => 'Somme',
+    ];
 
+    foreach ($hautsDeFrance as $departmentNumbers => $departments) {
+        echo "Le département $departments a pour numéro le $departmentNumbers. <br> ";
+    }
     ?>
 
 </body>
