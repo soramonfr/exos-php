@@ -19,7 +19,7 @@
     $months[7] = "août";
     var_dump($months);
     ?>
-
+    
 </body>
 
 </html>

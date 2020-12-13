@@ -27,6 +27,10 @@
     foreach ($hautsDeFrance as $departmentNumbers => $departments) {
         echo "Le département $departments a pour numéro le $departmentNumbers. <br> ";
     }
+
+    // foreach ($tableau as $key => $value) {
+    //     # code...
+    // }
     ?>
 
 </body>
