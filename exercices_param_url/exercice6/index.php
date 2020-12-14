@@ -24,8 +24,14 @@
         - Le deuxieme "bouton" doit permettre de revenir à la page index.php.
     </p>
 
+    <a href="index.php?building=12&amp;room=101"><input type="button" value="Envoi des paramètres"></a>
+    <a href="index.php"><input type="button" value="Retour INDEX"></a>
+    
     <?php
-
+    if (isset($_GET['building']) && isset($_GET['room'])) {
+        echo "<p>Immeuble :" . $_GET['building'] . "</p>"; 
+        echo "<p>Chambre :" . $_GET['room'] . "</p>";
+    } 
     ?>
 </body>
 
