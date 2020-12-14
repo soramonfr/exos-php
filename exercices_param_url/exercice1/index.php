@@ -23,13 +23,23 @@
 
     <a href="index.php?lastname=Tutor&amp;firstname=Janine"><input type="button" value="Envoi des paramètres"></a>
     <a href="index.php"><input type="button" value="Retour INDEX"></a>
-    <p>Param1: <?php echo $_GET['lastname']; ?></p>
-    <p>Param2: <?php echo $_GET['firstname']; ?></p>
+    <p>Param1:
+        <?php
+        if (isset($_GET['lastname'])) {
+            echo $_GET['lastname'];
+        }
+        ?>
+    </p>
+    <p>Param2:
+        <?php
+        if (isset($_GET['firstname'])) {
+            echo $_GET['firstname'];
+        }
+        ?>
+    </p>
 
     <?php
-    if (isset($_GET['lastname']) && isset($_GET['lastname'])) {
-       
-    }
+
     ?>
 </body>
 
