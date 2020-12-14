@@ -26,30 +26,14 @@
 
     <?php
     if (isset($_GET['lastname'])) {
-    ?>
-        <p>Param1: <?= $_GET['lastname'] ?></p>
-    <?php } ?>
-    <?php
-    if (isset($_GET['firstname'])) {
-    ?>
-        <p>Param2: <?= $_GET['firstname'] ?></p>
-    <?php } ?>
+        echo "<p>Param1 :" . $_GET['lastname'] . "</p>";
+    }
 
-    <!-- Première solution -->
-    <!-- <p>Param1:
-        <?php
-        if (isset($_GET['lastname'])) {
-            echo $_GET['lastname'];
-        }
-        ?>
-    </p>
-    <p>Param2:
-        <?php
-        if (isset($_GET['firstname'])) {
-            echo $_GET['firstname'];
-        }
-        ?>
-    </p> -->
+    if (isset($_GET['firstname'])) {
+        echo "<p>Param2 :" . $_GET['firstname'] . "</p>";
+    }
+    ?>
+
 </body>
 
 </html>
