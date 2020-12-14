@@ -24,8 +24,15 @@
         Le deuxieme "bouton" doit permettre de revenir à la page index.php.
     </p>
 
-    <?php
+    <a href="index.php?lastname=Shima&amp;firstname=Brian"><input type="button" value="Envoi des paramètres"></a>
+    <a href="index.php"><input type="button" value="Retour INDEX"></a>
 
+    <?php
+    if (isset($_GET['age'])) {
+        echo "<p>Age :" . $_GET['age'] . "ans</p>";
+    } else {
+        echo "<p>Il manque le paramètre âge 🕵️‍♀️</p>";
+    }
     ?>
 
 </body>
