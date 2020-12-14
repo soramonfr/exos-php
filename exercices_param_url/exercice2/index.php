@@ -28,7 +28,7 @@
     <a href="index.php"><input type="button" value="Retour INDEX"></a>
 
     <?php
-        if (isset($_GET['lastname']) && isset($_GET['firstname']) && isset($_GET['age'])) {
+    if (isset($_GET['lastname']) && isset($_GET['firstname']) && isset($_GET['age'])) {
         echo "<p>Age :" . $_GET['age'] . "ans</p>";
     } else if (isset($_GET['lastname']) && isset($_GET['firstname'])) {
         echo "<p>Il manque le paramètre âge 🕵️‍♀️</p>";
