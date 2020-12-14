@@ -23,8 +23,10 @@
         Dans le cas contraire ne rien afficher.<br>
         - Le deuxieme "bouton" doit permettre de revenir à la page index.php.
     </p>
+
     <a href="index.php?language=PHP&amp;server=WAMP"><input type="button" value="Envoi des paramètres"></a>
     <a href="index.php"><input type="button" value="Retour INDEX"></a>
+    
     <?php
     if (isset($_GET['language']) && isset($_GET['server'])) {
         echo "<p>Language :" . $_GET['language'] . "</p>"; 

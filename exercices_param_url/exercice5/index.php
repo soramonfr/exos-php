@@ -24,8 +24,13 @@
         - Le deuxieme "bouton" doit permettre de revenir à la page index.php.
     </p>
 
-    <?php
+    <a href="index.php?week=12"><input type="button" value="Envoi des paramètres"></a>
+    <a href="index.php"><input type="button" value="Retour INDEX"></a>
 
+    <?php
+    if (isset($_GET['week'])) {
+        echo "<p>Semaine :" . $_GET['week'] . "</p>"; 
+    } 
     ?>
 
 </body>

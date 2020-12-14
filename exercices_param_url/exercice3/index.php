@@ -23,8 +23,10 @@
         - Dans le cas contraire ne rien afficher.<br>
         Le deuxieme "bouton" doit permettre de revenir à la page index.php.
     </p>
+
     <a href="index.php?startDate=01/09/2019&amp;endDate=17/03/2020"><input type="button" value="Envoi des paramètres"></a>
     <a href="index.php"><input type="button" value="Retour INDEX"></a>
+    
     <?php
     if (isset($_GET['startDate']) && isset($_GET['endDate'])) {
         echo "<p>Date de début :" . $_GET['startDate'] . "</p>"; 
