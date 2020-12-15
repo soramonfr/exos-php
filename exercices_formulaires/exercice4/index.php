@@ -14,6 +14,14 @@
         Avec le formulaire de l'exercice 2, afficher dans la page user.php les données du formulaire transmises.
     </p>
 
+    <form action="user.php" method="post">
+        <label for="lastName">Nom</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="firstName">Prénom</label>
+        <input type="text" name="firstName" id="firstName">
+        <input type="submit" value="Valider">
+    </form>
+    
     <?php
 
     ?>
