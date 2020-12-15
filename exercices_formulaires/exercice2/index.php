@@ -14,6 +14,14 @@
         Créer un formulaire demandant **le nom** et **le prénom**. Ce formulaire doit rediriger vers la page **user.php** avec la méthode **POST**.
     </p>
 
+    <form action="user.php" method="post">
+        <label for="lastName">Nom</label>
+        <input type="text" name="lastName" id="lastName">
+        <label for="firstName">Prénom</label>
+        <input type="text" name="firstName" id="firstName">
+        <input type="submit" value="Valider">
+    </form>
+
     <?php
 
     ?>
