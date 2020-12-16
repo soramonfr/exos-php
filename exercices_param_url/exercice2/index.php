@@ -29,9 +29,9 @@
 
     <?php
     if (isset($_GET['lastname']) && isset($_GET['firstname']) && isset($_GET['age'])) {
-        echo "<p>Age :" . $_GET['age'] . "ans</p>";
+        echo "<p>Nom: " . $_GET['lastname'] . " Prénom: " . $_GET['firstname'] . " Age: " . $_GET['age'] . "ans</p>";
     } else if (isset($_GET['lastname']) && isset($_GET['firstname'])) {
-        echo "<p>Il manque le paramètre âge 🕵️‍♀️</p>";
+        echo "<p>Nom: " . $_GET['lastname'] . " Prénom: " . $_GET['firstname'] . ". Il manque le paramètre âge 🕵️‍♀️</p>";
     }
     ?>
 
