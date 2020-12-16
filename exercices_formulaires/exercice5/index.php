@@ -37,8 +37,8 @@
     </form> -->
 
     <!-- Ex 7 & 8 -->
+    <!-- var_dump($_FILES); pour voir comment est écrite cette array -->
     <?php
-    var_dump($_FILES);
     if (isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['title']) && isset($_FILES['pdfFile'])) {
         echo $_POST['title'] . " " . $_POST['lastName'] . " " . $_POST['firstName'] . "<br>" . $_FILES['pdfFile']['name'];
     } else {
