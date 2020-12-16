@@ -45,16 +45,16 @@
     ?>
         <form action="index.php" method="post" enctype="multipart/form-data">
             <label for="title">Civilité</label>
-            <select name="title">
+            <select name="title" id='title'>
                 <option value="Mr">Mr</option>
                 <option value="Mme">Mme</option>
             </select>
             <label for="lastName">Nom</label>
-            <input type="text" name="lastName">
+            <input type="text" name="lastName" id='lastName'>
             <label for="firstName">Prénom</label>
-            <input type="text" name="firstName">
+            <input type="text" name="firstName" id='firstName'>
             <label for="pdfFile">Ajouter un fichier:</label>
-            <input type="file" name="pdfFile" accept="application/pdf">
+            <input type="file" name="pdfFile" id='pdfFile' accept="application/pdf">
             <input type="submit" value="Valider">
         </form>
     <?php }
