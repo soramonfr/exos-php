@@ -11,7 +11,7 @@
     <h1># PHP - Upload d'images</h1>
 
     <form action="index.php" method="post" enctype="multipart/form-data">
-        <label for="pdfFile">Veuillez choisir une image:</label>
+        <label for="imgFile">Veuillez choisir une image:</label>
         <input type="file" name="imgFile" id='imgFile' accept="image/png, image/jpeg, image/gif, image/png">
         <input type="submit" value="Valider">
     </form>
