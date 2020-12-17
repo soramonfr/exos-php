@@ -1,7 +1,8 @@
 <?php
-setcookie("lastName", "Wonka", time() + 86400*7);
-setcookie("firstName", "Willy", time() + 86400*7);
-setcookie("age", "666", time() + 86400*7);
+session_start();
+$_SESSION['firstName'] = 'Willy';
+$_SESSION['lastName'] = 'Wonka';
+$_SESSION['age'] = 666;
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ setcookie("age", "666", time() + 86400*7);
         Il faudra afficher le contenu de ces variables sur la deuxième page.
     </p>
 
-    <a href="cookie.php" target="_blank">Hello, viens mettre des paillettes dans ta vie 🎨✨</a>
+    <a href="session.php" target="_blank">Hello, viens mettre des paillettes dans ta vie 🎨✨</a>
 
     <?php
 
