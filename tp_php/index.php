@@ -18,7 +18,7 @@
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Valider">
         </form>
-        <img id="preview">
+        <img id="imgPreview">
     </div>
 
     <!-- $_FILES['fileToUpload']['size'] -->
@@ -37,7 +37,7 @@
             echo "L'image a bien été uploadée sous le nom suivant: " . $_FILES['fileToUpload']['name'];
         }
     }
-    
+
     ?>
 
     <script src="assets/script.js"></script>
