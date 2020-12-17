@@ -26,6 +26,7 @@
     <!-- var_dump(pathinfo($_FILES['fileToUpload']['name'])); -->
     <?php
     var_dump($_FILES);
+
     if (isset($_FILES['fileToUpload'])) {
         $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
         if (!in_array($_FILES['fileToUpload']['type'], $validExtension)) {
@@ -36,6 +37,7 @@
             echo "L'image a bien été uploadée sous le nom suivant: " . $_FILES['fileToUpload']['name'];
         }
     }
+    
     ?>
 
     <script src="assets/script.js"></script>
