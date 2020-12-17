@@ -10,6 +10,8 @@ Il faut également que votre input soit de cette forme :
 _________________________________________________________________________________________________________________________
 */
 
+let imgPreview = document.getElementById("preview");
+
 fileToUpload.addEventListener("change", function () {
 	let input = this;
 	let oFReader = new FileReader(); // on créé un nouvel objet FileReader
