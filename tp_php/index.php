@@ -23,7 +23,6 @@
             <img id="imgPreview">
         </div>
 
-
         <!-- Taille maxi: 1Mo soit 1048576 octets soit 1024 * 1024 -->
 
         <?php
@@ -40,6 +39,7 @@
         }
         ?>
     </div>
+    
     <script src="assets/script.js"></script>
 </body>
 
