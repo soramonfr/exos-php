@@ -1,5 +1,6 @@
 #imgPreview {
-	width: 200px; 
-    max-height: 200px;
-	display: block;
+	width: 600px; 
+    max-height: 600px;
+    display: block;
+    margin: 0 auto;
 }
