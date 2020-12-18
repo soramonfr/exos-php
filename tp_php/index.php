@@ -28,8 +28,7 @@
     -->
 
     <?php
-    var_dump($_FILES);
-
+    var_dump(pathinfo($_FILES['fileToUpload']['name']));
     if (isset($_FILES['fileToUpload'])) {
         $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
         if (!in_array($_FILES['fileToUpload']['type'], $validExtension)) {
@@ -37,7 +36,7 @@
         } else if (($_FILES['fileToUpload']['size'] > 1024 * 1024)) {
             echo "Le fichier doit faire moins de 1Mo. Il n'a pas été uploadé.";
         } else {
-            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], 'img/' . basename($_FILES['fileToUpload']['name']));
+            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], 'img/' . uniqid() . strrchr($_FILES['fileToUpload']['name'], '.'));
             echo "L'image a bien été uploadée sous le nom suivant: " . $_FILES['fileToUpload']['name'];
         }
     }
