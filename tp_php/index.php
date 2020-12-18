@@ -24,8 +24,10 @@
         </div>
 
         <!-- Taille maxi: 1Mo soit 1048576 octets soit 1024 * 1024 -->
+        <!-- 1024 = 1 Ko // 1024 * 2 = 2ko... // 1024 * 1024 = 1 Mo // 1024 * 1024 *1024 = 1 Go // ... -->
 
         <?php
+        var_dump($_FILES);
         if (isset($_FILES['fileToUpload'])) {
             $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
             if (!in_array($_FILES['fileToUpload']['type'], $validExtension)) {
@@ -39,7 +41,7 @@
         }
         ?>
     </div>
-    
+
     <script src="assets/script.js"></script>
 </body>
 
