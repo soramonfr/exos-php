@@ -23,7 +23,10 @@
 
     <!-- $_FILES['fileToUpload']['size'] -->
     <!-- Taille maxi: 1Mo soit 1048576 octets -->
-    <!-- var_dump(pathinfo($_FILES['fileToUpload']['name'])); -->
+    <!-- var_dump(pathinfo($_FILES['fileToUpload']['name']));
+    $_FILES['fileToUpload']['tmp_name'] 
+    -->
+
     <?php
     var_dump($_FILES);
 
@@ -34,6 +37,7 @@
         } else if (($_FILES['fileToUpload']['size'] > 1024 * 1024)) {
             echo "Le fichier doit faire moins de 1Mo. Il n'a pas été uploadé.";
         } else {
+            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], 'img/' . basename($_FILES['fileToUpload']['name']));
             echo "L'image a bien été uploadée sous le nom suivant: " . $_FILES['fileToUpload']['name'];
         }
     }
