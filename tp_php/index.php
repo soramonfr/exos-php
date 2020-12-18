@@ -27,7 +27,6 @@
         <!-- 1024 = 1 Ko // 1024 * 2 = 2ko... // 1024 * 1024 = 1 Mo // 1024 * 1024 *1024 = 1 Go // ... -->
 
         <?php
-        var_dump($_FILES);
         if (isset($_FILES['fileToUpload'])) {
             $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
             if (!in_array($_FILES['fileToUpload']['type'], $validExtension)) {
