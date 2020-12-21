@@ -47,19 +47,15 @@ foreach($files as $key => $image){
         Récupère le mime-type d'un fichier spécifique */    
         $file_MimeType = $finfo->file($_FILES['fileToUpload']['tmp_name']);
         echo $file_MimeType;
+        
         Solution2:
         mime_content_type($_FILES['fileToUpload']['tmp_name']);
         echo mime_content_type($_FILES['fileToUpload']['tmp_name']); -->
 
         <?php
-        // Retourne le type mime à l'extension mimetype
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        // Récupère le mime-type d'un fichier spécifique */
-        $file_MimeType = $finfo->file($_FILES['fileToUpload']['tmp_name']);
-
         if (isset($_FILES['fileToUpload'])) {
             $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
-            if (!in_array($file_MimeType, $validExtension)) {
+            if (!in_array(mime_content_type($_FILES['fileToUpload']['tmp_name']), $validExtension)) {
                 echo "Le fichier transmis doit être une image. Il n'a pas été uploadé";
             } else if (($_FILES['fileToUpload']['size'] > 1024 * 1024)) {
                 echo "Le fichier doit faire moins de 1Mo. Il n'a pas été uploadé.";
