@@ -17,8 +17,8 @@ $files = scandir($dir);
     <div class="container">
         <div class="row">
             <?php
-            foreach ($files as $key => $image) {
-                if (is_file($image)) {
+            foreach ($files as $image) {
+                if (is_file("img/$image")) {
             ?>
                     <div class="card m-1 col-5" style="width: 18rem;">
                         <img src="img/<?= $image ?>" alt="" class="card-img-top">
