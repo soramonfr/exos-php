@@ -4,6 +4,7 @@ if (isset($_POST["submit"])) {
     $password  = $_POST["password"];
     setcookie("login", $login, time()+600);
     setcookie("password", $password, time()+600);
+    header("Location: cookie.php");
 }
 ?>
 
