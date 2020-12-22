@@ -25,6 +25,9 @@ if (isset($_POST["submit"])) {
     <p>## Exercice 4 <br>
         Faire une page qui va récupérer les informations du cookie créé à l'exercice 3 et qui les affiches.
     </p>
+    <p>## Exercice 5 <br>
+        Faire une page qui va pouvoir modifier le contenu du cookie de l'exercice 3.
+    </p>
     <form action="index.php" method="post">
         <label for="login">Nom d'utilisateur</label>
         <input type="text" name="login" id="login">
