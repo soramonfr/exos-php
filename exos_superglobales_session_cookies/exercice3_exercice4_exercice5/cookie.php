@@ -4,6 +4,7 @@ if (isset($_POST["login"]) && (isset($_POST["password"]))) {
     $password  = $_POST["password"];
     setcookie("login", $login, time()+600);
     setcookie("password", $password, time()+600);
+    // Une fois que les cookies ont été placés, ils seront accessible lors du prochain chargement de page dans le tableau $_COOKIE:
     header("Location: cookie.php");
 }
 
