@@ -1,12 +1,55 @@
 <?php
-$directory = 'img/';
-$files = scandir($directory);
-$fcount = 0; 
-foreach($files as $key => $image){
-    if (!is_dir($image)){
-        $fcount++;
+
+/**
+ * Fonction pour compter les images d'un dossier
+ */
+function count_image($directory = "img/") {
+    $fcount = 0;
+    $files = scandir($directory);
+    foreach($files as $image){
+        if (is_file("$directory/$image")){
+            $fcount++;
+        }
     }
+    return $fcount;
 }
+
+/**
+ * Fonction pour vérifier si un fichier a correctement été uploadé
+ */
+function checkUploadFile () {
+    if (!isset($_FILES['fileToUpload'])) {
+        return false;
+    }
+
+    $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
+    if (!in_array(mime_content_type($_FILES['fileToUpload']['tmp_name']), $validExtension)) {
+        return "Le fichier transmis doit être une image. Il n'a pas été uploadé";
+    } 
+    
+    if (($_FILES['fileToUpload']['size'] > 1024 * 1024)) {
+        return "Le fichier doit faire moins de 1Mo. Il n'a pas été uploadé.";
+    }
+    return "";
+}
+
+// On vérifie si un fichier a été upload et qu'il est conforme
+// S'il ne l'est pas, un message d'erreur est retourné par la fonction
+$error_msg = checkUploadFile();
+
+// Initialisation d'un message de succès
+$success_msg = "";
+
+// Si aucun message d'erreur n'a été retourné, alors on peut ajouter le dit fichier à notre galerie
+if ($error_msg === "" ) {
+    move_uploaded_file($_FILES['fileToUpload']['tmp_name'], 'img/' . uniqid() . strrchr($_FILES['fileToUpload']['name'], '.'));
+    // On définit un  message de succès qui sera affiché dans le code
+    $success_msg = "L'image (" . $_FILES['fileToUpload']['name'] . ") a bien été uploadée.";
+}
+
+// Maj du compteur d'image
+$img_count = count_image("img/");
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +76,7 @@ foreach($files as $key => $image){
             </form>
             <img id="imgPreview">
             <a href="gallery.php"><button type="button" class="btn btn-primary m-2" formaction="gallery.php">
-                    Images <span class="badge bg-secondary"><?= $fcount ?></span>
+                    Images <span class="badge bg-secondary"><?= $img_count ?></span>
                 </button></a>
         </div>
 
@@ -51,20 +94,8 @@ foreach($files as $key => $image){
         Solution2:
         mime_content_type($_FILES['fileToUpload']['tmp_name']);
         echo mime_content_type($_FILES['fileToUpload']['tmp_name']); -->
-
-        <?php
-        if (isset($_FILES['fileToUpload'])) {
-            $validExtension = ["image/png", "image/jpg", "image/jpeg", "image/gif"];
-            if (!in_array(mime_content_type($_FILES['fileToUpload']['tmp_name']), $validExtension)) {
-                echo "Le fichier transmis doit être une image. Il n'a pas été uploadé";
-            } else if (($_FILES['fileToUpload']['size'] > 1024 * 1024)) {
-                echo "Le fichier doit faire moins de 1Mo. Il n'a pas été uploadé.";
-            } else {
-                move_uploaded_file($_FILES['fileToUpload']['tmp_name'], 'img/' . uniqid() . strrchr($_FILES['fileToUpload']['name'], '.'));
-                echo "L'image (" . $_FILES['fileToUpload']['name'] . ") a bien été uploadée.";
-            }
-        }
-        ?>
+        <?= $error_msg ?>
+        <?= $success_msg ?>
     </div>
 
     <script src="assets/script.js"></script>
