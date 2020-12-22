@@ -30,7 +30,7 @@ function checkUploadFile () {
     if (($_FILES['fileToUpload']['size'] > 1024 * 1024)) {
         return "Le fichier doit faire moins de 1Mo. Il n'a pas été uploadé.";
     }
-    return "";
+    return true;
 }
 
 // On vérifie si un fichier a été upload et qu'il est conforme
@@ -41,7 +41,7 @@ $error_msg = checkUploadFile();
 $success_msg = "";
 
 // Si aucun message d'erreur n'a été retourné, alors on peut ajouter le dit fichier à notre galerie
-if ($error_msg === "" ) {
+if ($error_msg === true ) {
     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], 'img/' . uniqid() . strrchr($_FILES['fileToUpload']['name'], '.'));
     // On définit un  message de succès qui sera affiché dans le code
     $success_msg = "L'image (" . $_FILES['fileToUpload']['name'] . ") a bien été uploadée.";
