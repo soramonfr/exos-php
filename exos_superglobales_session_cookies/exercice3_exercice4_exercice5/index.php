@@ -1,13 +1,3 @@
-<?php
-if (isset($_POST["submit"])) {
-    $login = $_POST["login"];
-    $password  = $_POST["password"];
-    setcookie("login", $login, time()+600);
-    setcookie("password", $password, time()+600);
-    header("Location: cookie.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -29,7 +19,7 @@ if (isset($_POST["submit"])) {
     <p>## Exercice 5 <br>
         Faire une page qui va pouvoir modifier le contenu du cookie de l'exercice 3.
     </p>
-    <form action="index.php" method="post">
+    <form action="cookie.php" method="post">
         <label for="login">Nom d'utilisateur</label>
         <input type="text" name="login" id="login">
         <label for="password">Mot de passe</label>
