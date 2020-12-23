@@ -10,16 +10,32 @@
 <body>
 ## Exercice 1 <br>
 Afficher la date courante en respectant la forme **jj/mm/aaaa** *(ex : 16/05/2016)*<br>
-
+<br>
+<?php 
+$today = date("j/m/Y");
+echo $today;
+?>
+<br>
 <br>
 ## Exercice 2<br>
 Afficher la date courante en respectant la forme **jj-mm-aa** *(ex : 16-05-16)*<br>
-
+<br>
+<?php 
+$today = date("j-m-y");
+echo $today;
+?>
+<br>
 <br>
 ## Exercice 3<br>
 Afficher la date courante avec le jour de la semaine et le mois en toutes lettres *(ex : mardi 2 août 2016)*  <br>
 **Bonus** : Le faire en français.<br>
-
+<br>
+<?php 
+setlocale(LC_ALL, "fr_FR.UTF8", "fr.UTF8", "fr_FR.UTF-8", "fr.UTF-8","fra");
+$today = strftime("%A %d %B %Y");
+echo $today;
+?>
+<br>
 <br>
 ## Exercice 4<br>
 Afficher le timestamp du jour.<br>  
