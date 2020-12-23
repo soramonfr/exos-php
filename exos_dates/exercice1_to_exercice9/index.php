@@ -36,6 +36,7 @@ Afficher la date courante avec le jour de la semaine et le mois en toutes lettre
 
 
 <?php 
+// Réglage caractères spéciaux
 setlocale(LC_ALL, "fr_FR.UTF8", "fr.UTF8", "fr_FR.UTF-8", "fr.UTF-8","fra");
 $today = strftime("%A %d %B %Y");
 echo "=> ${today}";
@@ -47,15 +48,20 @@ Afficher le timestamp du jour.<br>
 Afficher le timestamp du mardi 2 août 2016 à 15h00.<br><br>
 
 <?php 
+// Réglage timezone car par défaut, renvoie GMT
 date_default_timezone_set("Europe/Paris");
+// Réglage caractères spéciaux
 setlocale(LC_ALL, "fr_FR.UTF8", "fr.UTF8", "fr_FR.UTF-8", "fr.UTF-8","fra");
 
-// Timestamp du jour
+// Timestamp: Le Timestamp UNIX représente le nombre de secondes écoulées depuis le 1er janvier 1970 à minuit (heure GMT) et jusqu’à une date donnée.
+// Timestamp du jour: time() retourne l'heure courante, mesurée en secondes depuis le début de l'époque UNIX, (1er janvier 1970 00:00:00 GMT). 
 $currentTimestamp = time();
 echo "=> Timestamp du jour: ${currentTimestamp}. <br>";
+// Vérification de la date et du fuseau horaire, affichage au format souhaité:
+echo "Soit :" . date("d/m/Y h:i:sa", $currentTimestamp) . "<br>";
 
 
-// Mardi 2 août 2016 à 15h00
+// Mardi 2 août 2016 à 15h00:
 $timestamp = mktime(15, 0, 0, 8, 2, 2016);
 echo "=> Timestamp du mardi 2 août 2016 à 15h00: ${timestamp}.";
 // Affichage du timestamp au format souhaité: echo date("d/m/Y h:i:sa", $timestamp);
