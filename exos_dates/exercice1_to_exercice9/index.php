@@ -83,6 +83,7 @@ echo $d2->format('d/m/Y H:i:s') . "<br>";
 echo "=> Solution 1 (POO) : Nombre de jours entre maintenant et le 16 mai 2016 : " . $d1->diff($d2)->days;
 echo "<br>";
 
+// Solution 2 procédurale
 $origin = date_create(); // Date du jour
 $target = date_create('2016-05-16');
 $interval = date_diff($origin, $target);
@@ -104,7 +105,12 @@ Afficher la date du jour + 20 jours.<br>
 <?php
 $interval = new DateInterval("P20D"); // Creation d'un intervalle de 20 jours (Format : P + x + D pour Days) : https://www.php.net/manual/fr/dateinterval.construct.php
 $current_day = new DateTime();
-echo "=> Date du jour + 20 jours : " . $current_day->add($interval)->format("d/m/Y");
+echo "=> Date du jour + 20 jours : " . $current_day->add($interval)->format("d/m/Y") . "<br>";
+
+// Solution procédurale
+$current_day = date_create();
+date_add($current_day, date_interval_create_from_date_string('20 days'));
+echo date_format($current_day, 'd-m-Y');
 ?>
 
 <br><br>
@@ -116,7 +122,12 @@ $current_day = new DateTime();
 echo "=> Date du jour - 22 jours : " . $current_day->sub($interval)->format("d/m/Y") . "<br>";
 
 // Autre solution
-echo "=> Date du jour - 22 jours (autre solution): " . date('d-m-Y', strtotime('-22 days'));
+echo "=> Date du jour - 22 jours (autre solution): " . date('d-m-Y', strtotime('-22 days')) . "<br>";
+
+// Autre autre Solution
+$current_day = date_create();
+date_sub($current_day, date_interval_create_from_date_string('22 days'));
+echo date_format($current_day, 'd-m-Y');
 ?>
 
 </body>
