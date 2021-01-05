@@ -1,8 +1,14 @@
 <?php
+// Réglage timezone car par défaut, renvoie GMT
+date_default_timezone_set("Europe/Paris");
+// Réglage caractères spéciaux
+setlocale(LC_ALL, "fr.UTF-8");
+
 $days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 $months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 $br = "<br>";
 
+// Fail fast
 if (!isset($_GET["months"])) {
     echo "🚧 Veuillez saisir un mois" . $br;
 }
@@ -10,6 +16,17 @@ if (!isset($_GET["months"])) {
 if (!isset($_GET["years"])) {
     echo "🚧 Veuillez saisir une année" . $br;
 }
+
+if (isset($_GET["months"]) && isset($_GET["years"])) {
+    $month = array_search($_GET["months"], $months) + 1;
+    $years = $_GET["years"];
+
+    $getDays = cal_days_in_month(CAL_GREGORIAN, $month, $years);
+    $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $years)))-1;
+    var_dump($getDays);
+    var_dump($days[$getFirstDay]);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +39,7 @@ if (!isset($_GET["years"])) {
 </head>
 
 <body>
-<!-- Génération du titre Mois + Année selectionnés -->
+<!-- Génération du titre : Mois + Année selectionnés -->
     <?php
     if (isset($_GET["months"]) && isset($_GET["years"])) {
     ?>
@@ -45,7 +62,7 @@ if (!isset($_GET["years"])) {
             </tr>
         </thead>
     </table>
-    
+
 <!-- Bouton de retour -->
     <a href="index.php"><button type="submit">Retour au formulaire</button></a>
 </body>
