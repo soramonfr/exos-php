@@ -1,8 +1,0 @@
-- Récupérer mois et année :
-
-* Combien de jours dans le mois : diff  => fonction => méthode (private)
-* Jour du mois qui commence : Représentation numérique (pour pouvoir exploiter arrays) ISO-8601 du jour de la semaine => fonction => méthode (private)
-* Génération des cases : public
-
-
-
