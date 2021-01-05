@@ -35,12 +35,9 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="assets/style.css" rel="stylesheet" type="text/css">
     <title>PHP - TP calendrier</title>
-    <style>
-        td {
-            border: solid 1px black;
-        }
-    </style>
 </head>
 
 <body>
@@ -48,18 +45,18 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
     <?php
     if (isset($_GET["months"]) && isset($_GET["years"])) {
     ?>
-        <h1>Affichage du calendrier pour <?= $_GET["months"] . " " . $_GET["years"] ?></h1>
+        <h1 class="text-center py-4"><?= $_GET["months"] . " " . $_GET["years"] ?></h1>
     <?php
     }
     ?>
 
     <!-- Génération du tableau -->
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <?php
                 foreach ($days as $day) {
-                    echo "<th>$day</th>";
+                    echo "<th class='table-dark text-center' style='width: 14.28%;'>$day</th>";
                 }
                 ?>
             </tr>
@@ -75,9 +72,9 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
                     }
                     // Génération des cases avec/sans les jours
                     if ((($day - $getFirstDay) > 0) && ($day - $getFirstDay <= $getDays)) {
-                        echo "<td>" . ($day - $getFirstDay) . "</td>";
+                        echo "<td class='pb-5'>" . ($day - $getFirstDay) . "</td>";
                     } else {
-                        echo "<td></td>";
+                        echo "<td class='table-secondary'></td>";
                     }
                     // 7 modulo 7 = 0 correspond au dernier jour de ma ligne
                     if ($day % 7 === 0) {
@@ -90,7 +87,7 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
     </table>
 
     <!-- Bouton de retour -->
-    <a href="index.php"><button type="submit">Retour au formulaire</button></a>
+    <a href="index.php"><button class="btn btn-dark" type="submit">⏪ Retour au formulaire</button></a>
 </body>
 
 </html>
