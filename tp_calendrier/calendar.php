@@ -23,7 +23,8 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
     $year = $_GET["years"];
     $getDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
     // Utilisation de intval pour convertir la string en int et ainsi la soustraire à 1 (supp du décalage de 1j dû à l'array)
-    $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $year)))-1;
+    $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $year))) - 1;
+    $getLastDay = intval(strftime("%u", strtotime($month . "/" .$getDays . "/" . $year))) - 1;
 }
 
 ?>
@@ -35,10 +36,15 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP - TP calendrier</title>
+    <style>
+        td {
+            border: solid 1px black;
+        }
+    </style>
 </head>
 
 <body>
-<!-- Génération du titre : Mois + Année selectionnés -->
+    <!-- Génération du titre : Mois + Année selectionnés -->
     <?php
     if (isset($_GET["months"]) && isset($_GET["years"])) {
     ?>
@@ -47,35 +53,41 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
     }
     ?>
 
-<!-- Génération du tableau -->
+    <!-- Génération du tableau -->
     <table>
         <thead>
             <tr>
                 <?php
                 foreach ($days as $day) {
-                echo "<th>$day</th>";
+                    echo "<th>$day</th>";
                 }
                 ?>
             </tr>
         </thead>
         <tbody>
-        <tr>
-                <?php 
-                for ($day=1; $day <= $getDays ; $day++) { 
-                    if ($day%7 === 1){
+            <tr>
+                <?php
+                // $getDays + $getFirstDay pour générer le nb de cases libres avant le 1er jour
+                for ($day = 1; $day <= $getDays + $getFirstDay; $day++) {
+                    
+                    if ($day % 7 === 1) {
                         echo "<tr>";
                     }
-                    echo "<td>$day</td>";
-                    if ($day%7 === 0){
+                    if (($day - $getFirstDay) > 0) {
+                        echo "<td>" . ($day - $getFirstDay) . "</td>";
+                    } else {
+                        echo "<td></td>";
+                    }                    
+                    if ($day % 7 === 0) {
                         echo "</tr>";
                     }
                 }
                 ?>
-        </tr>
+            </tr>
         </tbody>
     </table>
 
-<!-- Bouton de retour -->
+    <!-- Bouton de retour -->
     <a href="index.php"><button type="submit">Retour au formulaire</button></a>
 </body>
 
