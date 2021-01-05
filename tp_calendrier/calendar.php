@@ -10,19 +10,20 @@ $br = "<br>";
 
 // Fail fast
 if (!isset($_GET["months"])) {
-    echo "🚧 Veuillez saisir un mois" . $br;
+    echo "🚧 Veuillez saisir un mois." . $br;
 }
 
 if (!isset($_GET["years"])) {
-    echo "🚧 Veuillez saisir une année" . $br;
+    echo "🚧 Veuillez saisir une année." . $br;
 }
 
+// Détermination du 1er jour du mois et du nb de jours dans le mois
 if (isset($_GET["months"]) && isset($_GET["years"])) {
     $month = array_search($_GET["months"], $months) + 1;
-    $years = $_GET["years"];
-
-    $getDays = cal_days_in_month(CAL_GREGORIAN, $month, $years);
-    $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $years)))-1;
+    $year = $_GET["years"];
+    $getDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+    // Utilisation de intval pour convertir la string en int et ainsi la soustraire à 1 (supp du décalage de 1j dû à l'array)
+    $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $year)))-1;
 }
 
 ?>
@@ -52,13 +53,26 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
             <tr>
                 <?php
                 foreach ($days as $day) {
-                ?>
-                    <th style="width: 100px;"><?= $day ?></th>
-                <?php
+                echo "<th>$day</th>";
                 }
                 ?>
             </tr>
         </thead>
+        <tbody>
+        <tr>
+                <?php 
+                for ($day=1; $day <= $getDays ; $day++) { 
+                    if ($day%7 === 1){
+                        echo "<tr>";
+                    }
+                    echo "<td>$day</td>";
+                    if ($day%7 === 0){
+                        echo "</tr>";
+                    }
+                }
+                ?>
+        </tr>
+        </tbody>
     </table>
 
 <!-- Bouton de retour -->
