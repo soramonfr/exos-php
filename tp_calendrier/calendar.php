@@ -25,13 +25,13 @@ if (!isset($_GET["years"])) {
     <?php
     if (isset($_GET["months"]) && isset($_GET["years"])) {
     ?>
-        <h1 class="text-center text-primary m-4"><?= $_GET["months"] . " " . $_GET["years"] ?></h1>
+        <h1><?= $_GET["months"] . " " . $_GET["years"] ?></h1>
     <?php
     }
     ?>
 
-    <table class="table table-bordered">
-        <thead class="title text-center text-white bg-dark">
+    <table>
+        <thead>
             <tr>
                 <?php
                 foreach ($days as $day) {
@@ -44,8 +44,6 @@ if (!isset($_GET["years"])) {
         </thead>
     </table>
     <a href="index.php"><button type="submit">Retour au formulaire</button></a>
-
-
 </body>
 
 </html>
