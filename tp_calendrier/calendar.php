@@ -5,11 +5,11 @@ $br = "<br>";
 
 if (!isset($_GET["months"])) {
     echo "🚧 Veuillez saisir un mois" . $br;
-} 
+}
 
 if (!isset($_GET["years"])) {
     echo "🚧 Veuillez saisir une année" . $br;
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,14 +22,16 @@ if (!isset($_GET["years"])) {
 </head>
 
 <body>
+<!-- Génération du titre Mois + Année selectionnés -->
     <?php
     if (isset($_GET["months"]) && isset($_GET["years"])) {
     ?>
-        <h1><?= $_GET["months"] . " " . $_GET["years"] ?></h1>
+        <h1>Affichage du calendrier pour <?= $_GET["months"] . " " . $_GET["years"] ?></h1>
     <?php
     }
     ?>
 
+<!-- Génération du tableau -->
     <table>
         <thead>
             <tr>
@@ -43,6 +45,8 @@ if (!isset($_GET["years"])) {
             </tr>
         </thead>
     </table>
+    
+<!-- Bouton de retour -->
     <a href="index.php"><button type="submit">Retour au formulaire</button></a>
 </body>
 
