@@ -17,7 +17,6 @@ $months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Ao
         <div>
             <label for="month-select">Mois:</label>
             <select name="months">
-                <option value="">--Options possibles--</option>
                 <?php
                 foreach ($months as $month) {
                 ?>
@@ -30,7 +29,6 @@ $months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Ao
         <div>
             <label for="year-select">Année:</label>
             <select name="years">
-                <option value="">--Options possibles--</option>
                 <?php
                 for ($year = 2020; $year <= 2030; $year++) {
                 ?>
