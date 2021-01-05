@@ -24,7 +24,7 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
     $getDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
     // Utilisation de intval pour convertir la string en int et ainsi la soustraire à 1 (supp du décalage de 1j dû à l'array)
     $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $year))) - 1;
-    $getLastDay = intval(strftime("%u", strtotime($month . "/" .$getDays . "/" . $year))) - 1;
+    $getLastDay = intval(strftime("%u", strtotime($month . "/" . $getDays . "/" . $year))) - 1;
 }
 
 ?>
@@ -68,16 +68,16 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
             <tr>
                 <?php
                 // $getDays + $getFirstDay pour générer le nb de cases libres avant le 1er jour
-                for ($day = 1; $day <= $getDays + $getFirstDay; $day++) {
-                    
+                for ($day = 1; $day <= $getDays + $getFirstDay + (6 - $getLastDay); $day++) {
+
                     if ($day % 7 === 1) {
                         echo "<tr>";
                     }
-                    if (($day - $getFirstDay) > 0) {
+                    if ((($day - $getFirstDay) > 0) && ($day - $getFirstDay <= $getDays)) {
                         echo "<td>" . ($day - $getFirstDay) . "</td>";
                     } else {
                         echo "<td></td>";
-                    }                    
+                    }
                     if ($day % 7 === 0) {
                         echo "</tr>";
                     }
