@@ -67,17 +67,19 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
         <tbody>
             <tr>
                 <?php
-                // $getDays + $getFirstDay pour générer le nb de cases libres avant le 1er jour
+                // $getDays + $getFirstDay pour trouver le nb de cases libres avant le 1er jour // 6 - $getLastDay pour trouver le nb de cases vides après le dernier jour
                 for ($day = 1; $day <= $getDays + $getFirstDay + (6 - $getLastDay); $day++) {
-
+                    // 1 modulo 7 correspond au 1er jour de ma ligne
                     if ($day % 7 === 1) {
                         echo "<tr>";
                     }
+                    // Génération des cases avec/sans les jours
                     if ((($day - $getFirstDay) > 0) && ($day - $getFirstDay <= $getDays)) {
                         echo "<td>" . ($day - $getFirstDay) . "</td>";
                     } else {
                         echo "<td></td>";
                     }
+                    // 7 modulo 7 = 0 correspond au dernier jour de ma ligne
                     if ($day % 7 === 0) {
                         echo "</tr>";
                     }
