@@ -23,8 +23,6 @@ if (isset($_GET["months"]) && isset($_GET["years"])) {
 
     $getDays = cal_days_in_month(CAL_GREGORIAN, $month, $years);
     $getFirstDay = intval(strftime("%u", strtotime($month . "/01/" . $years)))-1;
-    var_dump($getDays);
-    var_dump($days[$getFirstDay]);
 }
 
 ?>
