@@ -17,7 +17,7 @@ if (!isset($_GET["years"])) {
     echo "🚧 Veuillez saisir une année." . $br;
 }
 
-// Détermination du 1er jour du mois et du nb de jours dans le mois
+// Détermination des 1er et dernier jours du mois et du nb de jours dans le mois
 if (isset($_GET["months"]) && isset($_GET["years"])) {
     $month = array_search($_GET["months"], $months) + 1;
     $year = $_GET["years"];
