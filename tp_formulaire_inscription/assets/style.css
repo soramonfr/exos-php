@@ -1,0 +1,13 @@
+body {
+  background-color: #f1eef5;
+}
+
+h1,
+h2 {
+  color: #5E227F;
+}
+
+.btn {
+    color: white;
+    background-color: #5E227F;
+}
