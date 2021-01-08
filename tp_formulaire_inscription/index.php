@@ -165,21 +165,21 @@ function validateUrlField($var)
 
 // S'il y a eu soumission de formulaire, génération des fonctions de validation
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errorMsg["user-name"] = (!validateTextField($_POST["user-name"])) ? "Champ non valide" : "";
-    $errorMsg["user-firstname"] = (!validateTextField($_POST["user-firstname"])) ? "Champ non valide" : "";
-    $errorMsg["user-birthdate"] = (!validateDateField($_POST["user-birthdate"])) ? "Champ non valide" : "";
-    $errorMsg["user-birthcountry"] = (!validateTextField($_POST["user-birthcountry"])) ? "Champ non valide" : "";
-    $errorMsg["user-nationality"] = (!validateTextField($_POST["user-nationality"])) ? "Champ non valide" : "";
-    $errorMsg["user-address"] = (!validateRequiredField($_POST["user-address"])) ? "Champ non valide" : "";
-    $errorMsg["user-email"] = (!validateEmailField($_POST["user-email"])) ? "Champ non valide" : "";
-    $errorMsg["user-phonenumber"] = (!validateTelField($_POST["user-phonenumber"])) ? "Champ non valide" : "";
-    $errorMsg["user-education"] = (!validateTextField($_POST["user-education"])) ? "Champ non valide" : "";
-    $errorMsg["user-unemploymentid"] = (!validateIdField($_POST["user-unemploymentid"])) ? "Champ non valide" : "";
-    $errorMsg["user-badges"] = (!validateNumberField($_POST["user-badges"])) ? "Champ non valide" : "";
-    $errorMsg["user-link"] = (!validateUrlField($_POST["user-link"])) ? "Champ non valide" : "";
-    $errorMsg["user-hero"] = (!validateRequiredField($_POST["user-hero"])) ? "Champ non valide" : "";
-    $errorMsg["user-hack"] = (!validateRequiredField($_POST["user-hack"])) ? "Champ non valide" : "";
-    $errorMsg["user-xp"] = (!validateRequiredField($_POST["user-xp"])) ? "Champ non valide" : "";
+    $errorMsg["user-name"] = (!validateTextField($_POST["user-name"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-firstname"] = (!validateTextField($_POST["user-firstname"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-birthdate"] = (!validateDateField($_POST["user-birthdate"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-birthcountry"] = (!validateTextField($_POST["user-birthcountry"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-nationality"] = (!validateTextField($_POST["user-nationality"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-address"] = (!validateRequiredField($_POST["user-address"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-email"] = (!validateEmailField($_POST["user-email"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-phonenumber"] = (!validateTelField($_POST["user-phonenumber"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-education"] = (!validateTextField($_POST["user-education"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-unemploymentid"] = (!validateIdField($_POST["user-unemploymentid"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-badges"] = (!validateNumberField($_POST["user-badges"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-link"] = (!validateUrlField($_POST["user-link"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-hero"] = (!validateRequiredField($_POST["user-hero"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-hack"] = (!validateRequiredField($_POST["user-hack"])) ? "Champ non valide" : "✔";
+    $errorMsg["user-xp"] = (!validateRequiredField($_POST["user-xp"])) ? "Champ non valide" : "✔";
 }
 
 ?>
