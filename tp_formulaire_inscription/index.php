@@ -107,6 +107,7 @@ function validateTelField($var)
 }
 
 // Pour la saisie d'une date
+// Format renvoyé par défaut yyyy-mm-dd
 function validateDateField($var)
 {
     $var = cleanData($var);
