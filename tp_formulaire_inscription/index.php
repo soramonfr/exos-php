@@ -1,6 +1,4 @@
 <?php
-// $br = "<br>";
-
 // Initialisation du tableau d'erreur
 $errorMsg = [
     "user-name" => "",
@@ -20,6 +18,16 @@ $errorMsg = [
     "user-xp" => ""
 ];
 
+// Filtrage des données potentiellement dangereuses
+// htmlspecialchars() va permettre d’échapper certains caractères spéciaux comme les chevrons « < » et « > » en les transformant en entités HTML.
+// trim() qui va supprimer les espaces inutiles et stripslashes() qui va supprimer les antislashes.
+function cleanData($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 $userName = (isset($_POST["user-name"])) ? cleanData($_POST["user-name"]) : "";
 $userFirstname = (isset($_POST["user-firstname"])) ? cleanData($_POST["user-firstname"]) : "";
 $userBirthdate = (isset($_POST["user-birthdate"])) ? cleanData($_POST["user-birthdate"]) : "";
@@ -36,34 +44,19 @@ $userHero = (isset($_POST["user-hero"])) ? cleanData($_POST["user-hero"]) : "";
 $userHack = (isset($_POST["user-hack"])) ? cleanData($_POST["user-hack"]) : "";
 $userXp = (isset($_POST["user-xp"])) ? cleanData($_POST["user-xp"]) : "";
 
-// function checkForm ($errors) {
-//     (empty($_POST["user-name"])) ? $errors["user-name"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-firstname"])) ? $errors["user-firstname"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-birthdate"])) ? $errors["user-birthdate"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-birthcountry"])) ? $errors["user-birthcountry"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-nationality"])) ? $errors["user-nationality"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-address"])) ? $errors["user-address"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-email"])) ? $errors["user-email"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-phonenumber"])) ? $errors["user-phonenumber"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-education"])) ? $errors["user-education"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-unemploymentid"])) ? $errors["user-unemploymentid"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-badges"])) ? $errors["user-badges"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-link"])) ? $errors["user-link"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-hero"])) ? $errors["user-hero"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-hack"])) ? $errors["user-hack"] = "Veuillez renseigner ce champ" : "";
-//     (empty($_POST["user-xp"])) ? $errors["user-xp"] = "Veuillez renseigner ce champ" : "";
-//     return $errors;
-// }
-// var_dump(empty($toto));
-// $errors = checkForm($errors);
+// Rappels regex
+// [ ] : Définir un ensemble de caractères à chercher
+// ( ) : servent à définir des sous groupes de recherche
+// ^ : début d'une ligne
+// $ : fin d'une ligne
 
-function cleanData($var) {
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
+// multiplicateur :
+// ? : 0 ou 1 occurrence
+// + : 1 ou plusieurs occurrences
+// * : 0 ou plusieurs occurrences
+// { 0, 8} : 0 à 8 occurrences
 
+// Fonctions de validation des champs
 function validateTextField ($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -71,19 +64,6 @@ function validateTextField ($var) {
     if (preg_match($textRegex, $var) == false) return false;
     return true;
 }
-
-// [ ] : Définir un ensemble de caractère à chercher
-// ( ) : servent à définir des sous groupe de recherche
-// ^ : début d'une ligne
-// $ : fin d'une ligne
-
-// multiplicateur :
-// ? : 0 ou 1 occurence
-// + : 1 ou plusieurs occurences
-// * : 0 ou plusieurs occurences
-// { 0, 8} : 0 à 8 occurrences
-
-
 
 function validateEmailField($var) {
     $var = cleanData($var);
@@ -154,7 +134,7 @@ function validateUrlField($var) {
     return true;
 }
 
-// S'il y a eu soumission de formulaire
+// S'il y a eu soumission de formulaire, génération des fonctions de validation
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $errorMsg["user-name"] = (!validateTextField($_POST["user-name"])) ? "Champ non valide" : "";
@@ -190,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container">
 
-        <h1 class="text-center">Formulaire d'inscription à l'académie du web</h1>
+        <h1 class="text-center">🔻S'inscrire à l'académie du web 🔻</h1>
         <form action="index.php" method="post" novalidate >
             <h2>🕵️‍♂️ Etat civil</h2>
             <div class="form-group">
