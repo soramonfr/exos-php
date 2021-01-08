@@ -57,6 +57,8 @@ $userXp = (isset($_POST["user-xp"])) ? cleanData($_POST["user-xp"]) : "";
 // { 0, 8} : 0 à 8 occurrences
 
 // Fonctions de validation des champs
+
+// Pour la saisie de texte
 function validateTextField ($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -65,6 +67,7 @@ function validateTextField ($var) {
     return true;
 }
 
+// Pour la saisie d'un email
 function validateEmailField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -72,6 +75,7 @@ function validateEmailField($var) {
     return true;
 }
 
+// Pour la saisie d'un nombre
 // Utilisation de FILTER_VALIDATE_INT possible aussi
 function validateNumberField($var) {
     $var = cleanData($var);
@@ -81,6 +85,7 @@ function validateNumberField($var) {
     return true;
 }
 
+// Pour la saisie d'un numéro de téléphoe avec ou sans indicatif
 function validateTelField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -89,6 +94,7 @@ function validateTelField($var) {
     return true;
 }
 
+// Pour la saisie d'une date
 function validateDateField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -96,12 +102,14 @@ function validateDateField($var) {
     return true;
 }
 
+// Pour la saisie d'un champ "divers"
 function validateRequiredField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
     return true;
 }
 
+// Pour la saisie de texte en alpha numérique
 function validateAlphaNumTextField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -110,6 +118,7 @@ function validateAlphaNumTextField($var) {
     return true;
 }
 
+// Pour la saisie dans un select (renvoie le nom de l'option)
 function validateEductationField($var) {
     $validEducation = array("nodiploma", "highschooldiploma", "techdiploma", "bachelor", "bachelorplus");
     $var = cleanData($var);
@@ -117,6 +126,7 @@ function validateEductationField($var) {
     return in_array($var, $validEducation);
 }
 
+// Pour la saisie de l'ID pôle emploi
 function validateIdField($var) {
     // 4735412P88
     $var = cleanData($var);
@@ -127,6 +137,7 @@ function validateIdField($var) {
     return true;
 }
 
+// Pour la saisie d'une URL
 function validateUrlField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
