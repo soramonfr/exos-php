@@ -128,11 +128,10 @@ function validateEductationField($var) {
 
 // Pour la saisie de l'ID pôle emploi
 function validateIdField($var) {
-    // 4735412P88
+    // 4735412P88 - 7chiffres + 1lettre + 2 chiffres
     $var = cleanData($var);
     if (empty($var)) return false;
-    // TODO Faore la regex
-    $textRegex = '/^$/';
+    $textRegex = '/^([0-9]{7})([a-zA-Z]{1})([0-9]{2})$/';
     if (preg_match($textRegex, $var) == false) return false;
     return true;
 }
@@ -231,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
                 <span class="text-danger"><?= $errorMsg["user-phonenumber"] ?></span>
                 <label for="user-phonenumber">Téléphone: </label>
-                <input class="form-control" placeholder="(+33) 06 66 66 66 66" type="tel" required name="user-phonenumber" value="<?= $userPhonenumber ?>">
+                <input class="form-control" placeholder="ex: +33666666666 ou 0666666666" type="tel" required name="user-phonenumber" value="<?= $userPhonenumber ?>">
             </div>
 
             <h2>📜 Education</h2>
