@@ -29,6 +29,7 @@ function cleanData($var)
     return $var;
 }
 
+// Une fois les données soumises, on applique le premier filtre
 $userName = (isset($_POST["user-name"])) ? cleanData($_POST["user-name"]) : "";
 $userFirstname = (isset($_POST["user-firstname"])) ? cleanData($_POST["user-firstname"]) : "";
 $userBirthdate = (isset($_POST["user-birthdate"])) ? cleanData($_POST["user-birthdate"]) : "";
@@ -57,6 +58,12 @@ $userXp = (isset($_POST["user-xp"])) ? cleanData($_POST["user-xp"]) : "";
 // * : 0 ou plusieurs occurrences
 // { 0, 8} : 0 à 8 occurrences
 
+// Factorisation
+// if (empty($var)) return false; revient à faire
+// if (empty($var)) {
+//     return false
+// } 
+
 // Fonctions de validation des champs
 
 // Pour la saisie de texte
@@ -64,7 +71,7 @@ function validateTextField($var)
 {
     $var = cleanData($var);
     if (empty($var)) return false;
-    $textRegex = '/^[a-zA-Z -]+$/';
+    $textRegex = '/^\D*$/'; 
     if (preg_match($textRegex, $var) == false) return false;
     return true;
 }
@@ -157,7 +164,6 @@ function validateUrlField($var)
 
 // S'il y a eu soumission de formulaire, génération des fonctions de validation
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $errorMsg["user-name"] = (!validateTextField($_POST["user-name"])) ? "Champ non valide" : "";
     $errorMsg["user-firstname"] = (!validateTextField($_POST["user-firstname"])) ? "Champ non valide" : "";
     $errorMsg["user-birthdate"] = (!validateDateField($_POST["user-birthdate"])) ? "Champ non valide" : "";
