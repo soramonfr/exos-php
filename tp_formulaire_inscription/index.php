@@ -127,10 +127,9 @@ function validateIdField($var) {
 }
 
 function validateUrlField($var) {
-    // 4735412P88
     $var = cleanData($var);
     if (empty($var)) return false;
-    // TODO Faire le filter url
+    if (!filter_var($var, FILTER_VALIDATE_URL)) return false;
     return true;
 }
 
@@ -171,6 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
 
         <h1 class="text-center">🔻S'inscrire à l'académie du web 🔻</h1>
+        <p class="text-center">Veuillez renseigner tous les champs</p>
         <form action="index.php" method="post" novalidate >
             <h2>🕵️‍♂️ Etat civil</h2>
             <div class="form-group">
@@ -268,7 +268,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
                 <span class="text-danger"><?= $errorMsg["user-xp"] ?></span>
-                <label for="user-xp">Avez vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ?</label>
+                <label for="user-xp">Avez-vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ?</label>
                 <textarea class="form-control" placeholder="Oui et c'est la suivante..." required name="user-xp"><?= $userXp ?></textarea>
             </div>
 

@@ -3,8 +3,13 @@ body {
 }
 
 h1,
-h2 {
+h2,
+p {
   color: #5E227F;
+}
+
+p {
+  font-style: italic;
 }
 
 .btn {
