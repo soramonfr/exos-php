@@ -72,6 +72,7 @@ function validateEmailField($var) {
     return true;
 }
 
+// Utilisation de FILTER_VALIDATE_INT possible aussi
 function validateNumberField($var) {
     $var = cleanData($var);
     if (empty($var)) return false;
