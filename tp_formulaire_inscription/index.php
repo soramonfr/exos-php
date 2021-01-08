@@ -21,7 +21,8 @@ $errorMsg = [
 // Filtrage des données potentiellement dangereuses
 // htmlspecialchars() va permettre d’échapper certains caractères spéciaux comme les chevrons « < » et « > » en les transformant en entités HTML.
 // trim() qui va supprimer les espaces inutiles et stripslashes() qui va supprimer les antislashes.
-function cleanData($var) {
+function cleanData($var)
+{
     $var = trim($var);
     $var = stripslashes($var);
     $var = htmlspecialchars($var);
@@ -59,7 +60,8 @@ $userXp = (isset($_POST["user-xp"])) ? cleanData($_POST["user-xp"]) : "";
 // Fonctions de validation des champs
 
 // Pour la saisie de texte
-function validateTextField ($var) {
+function validateTextField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     $textRegex = '/^[a-zA-Z -]+$/';
@@ -68,7 +70,8 @@ function validateTextField ($var) {
 }
 
 // Pour la saisie d'un email
-function validateEmailField($var) {
+function validateEmailField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     if (!filter_var($var, FILTER_VALIDATE_EMAIL)) return false;
@@ -77,7 +80,8 @@ function validateEmailField($var) {
 
 // Pour la saisie d'un nombre
 // Utilisation de FILTER_VALIDATE_INT possible aussi
-function validateNumberField($var) {
+function validateNumberField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     $textRegex = '/^[0-9]+$/';
@@ -86,7 +90,8 @@ function validateNumberField($var) {
 }
 
 // Pour la saisie d'un numéro de téléphoe avec ou sans indicatif
-function validateTelField($var) {
+function validateTelField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     $textRegex = '/^(\+[0-9]{2,3})?([0-9]){9,15}$/';
@@ -95,22 +100,25 @@ function validateTelField($var) {
 }
 
 // Pour la saisie d'une date
-function validateDateField($var) {
+function validateDateField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
-    if(date_create($var) === false) return false;
+    if (date_create($var) === false) return false;
     return true;
 }
 
 // Pour la saisie d'un champ "divers"
-function validateRequiredField($var) {
+function validateRequiredField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     return true;
 }
 
 // Pour la saisie de texte en alpha numérique
-function validateAlphaNumTextField($var) {
+function validateAlphaNumTextField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     $textRegex = '/^[\w ]+$/';
@@ -119,7 +127,8 @@ function validateAlphaNumTextField($var) {
 }
 
 // Pour la saisie dans un select (renvoie le nom de l'option)
-function validateEductationField($var) {
+function validateEductationField($var)
+{
     $validEducation = array("nodiploma", "highschooldiploma", "techdiploma", "bachelor", "bachelorplus");
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -127,7 +136,8 @@ function validateEductationField($var) {
 }
 
 // Pour la saisie de l'ID pôle emploi
-function validateIdField($var) {
+function validateIdField($var)
+{
     // 4735412P88 - 7chiffres + 1lettre + 2 chiffres
     $var = cleanData($var);
     if (empty($var)) return false;
@@ -137,7 +147,8 @@ function validateIdField($var) {
 }
 
 // Pour la saisie d'une URL
-function validateUrlField($var) {
+function validateUrlField($var)
+{
     $var = cleanData($var);
     if (empty($var)) return false;
     if (!filter_var($var, FILTER_VALIDATE_URL)) return false;
@@ -146,7 +157,7 @@ function validateUrlField($var) {
 
 // S'il y a eu soumission de formulaire, génération des fonctions de validation
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
+
     $errorMsg["user-name"] = (!validateTextField($_POST["user-name"])) ? "Champ non valide" : "";
     $errorMsg["user-firstname"] = (!validateTextField($_POST["user-firstname"])) ? "Champ non valide" : "";
     $errorMsg["user-birthdate"] = (!validateDateField($_POST["user-birthdate"])) ? "Champ non valide" : "";
@@ -182,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <h1 class="text-center">🔻S'inscrire à l'académie du web 🔻</h1>
         <p class="text-center">Veuillez renseigner tous les champs</p>
-        <form action="index.php" method="post" novalidate >
+        <form action="index.php" method="post" novalidate>
             <h2>🕵️‍♂️ Etat civil</h2>
             <div class="form-group">
                 <span class="text-danger"><?= $errorMsg["user-name"] ?></span>
@@ -238,6 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <span class="text-danger"><?= $errorMsg["user-education"] ?></span>
                 <label for="user-education">Diplôme: </label>
                 <select class="custom-select" required name="user-education" id="user-education">
+                    <option value="">--Choisissez une option--</option>
                     <option value="nodiploma" <?= ($userEducation === "nodiploma") ? "selected" : "" ?>>Sans diplôme</option>
                     <option value="highschooldiploma" <?= ($userEducation === "highschooldiploma") ? "selected" : "" ?>>Bac</option>
                     <option value="techdiploma" <?= ($userEducation === "techdiploma") ? "selected" : "" ?>>Bac +2</option>
@@ -283,7 +295,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <textarea class="form-control" placeholder="Oui et c'est la suivante..." required name="user-xp"><?= $userXp ?></textarea>
             </div>
 
-        <button type="submit" class="btn">🥊 Envoyer au boss de fin 🥊</button>
+            <button type="submit" class="btn">🥊 Envoyer au boss de fin 🥊</button>
         </form>
     </div>
 
