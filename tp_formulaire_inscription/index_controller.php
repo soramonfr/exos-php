@@ -164,6 +164,12 @@ function validateUrlField($var)
 }
 
 // S'il y a eu soumission de formulaire, génération des fonctions de validation
+// Stack tip: 
+// For general check if there was a POST action use:
+//     if (!empty($_POST))
+//     This method won't work for in some cases (e.g. with check boxes and button without a name). You really should use:
+//     if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorMsg["user-name"] = (!validateTextField($_POST["user-name"])) ? "Champ non valide" : "✔";
     $errorMsg["user-firstname"] = (!validateTextField($_POST["user-firstname"])) ? "Champ non valide" : "✔";
