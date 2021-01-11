@@ -164,7 +164,7 @@ function validateUrlField($var)
 }
 
 // S'il y a eu soumission de formulaire, génération des fonctions de validation
-// Stack tip: 
+// Stack tip - Checking if form has been submitted:
 // For general check if there was a POST action use:
 //     if (!empty($_POST))
 //     This method won't work for in some cases (e.g. with check boxes and button without a name). You really should use:
