@@ -35,7 +35,7 @@ require_once 'index_controller.php';
             <div class="form-group">
                 <span class="text-danger"><?= $errorMsg["user-birthdate"] ?></span>
                 <label for="user-birthdate">Date de naissance: </label>
-                <input class="form-control" type="date" required name="user-birthdate" value="<?= $userBirthdate ?>">
+                <input class="form-control" type="date" required name="user-birthdate" min="1930-01-01" max="2021-12-31" value="<?= $userBirthdate ?>">
             </div>
 
             <div class="form-group">
