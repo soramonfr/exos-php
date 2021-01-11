@@ -54,7 +54,7 @@ require_once 'index_controller.php';
             <div class="form-group">
                 <span class="text-danger"><?= $errorMsg["user-address"] ?></span>
                 <label for="user-address">Adresse: </label>
-                <input class="form-control" placeholder="5 rue des tournesols, 69003 Lyon" type="text" required name="user-address" value="<?= $userAddress ?>">
+                <input class="form-control" placeholder="5 rue des tournesols 69003 Lyon" type="text" required name="user-address" value="<?= $userAddress ?>">
             </div>
 
             <div class="form-group">
