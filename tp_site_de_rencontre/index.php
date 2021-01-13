@@ -1,5 +1,9 @@
 <?php
 require_once 'index_controller.php';
+
+if (!empty($_COOKIE)) {
+  header('Location: lovers.php');
+}
 ?>
 
 <!doctype html>

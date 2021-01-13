@@ -50,9 +50,9 @@ foreach ($catalog as $bachelorNumber => $bachelor) {
 }
 ?>-->
     <div class="row">
-        <?php
+        <?php        
         foreach ($catalog as $bachelorNumber => $bachelor) { 
-            // if ($_COOKIE['preference'] == $bachelor["gender"]){
+            if (isset($_COOKIE['preference']) && $_COOKIE['preference'] == $bachelor["gender"]){              
                 ?>
             <div class="card col-4" style="width: 18rem;">
                 <?= "Célibataire n°" . ($bachelorNumber + 1) . " :<br>"; ?>
